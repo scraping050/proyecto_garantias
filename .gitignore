@@ -1,0 +1,62 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Node
+node_modules/
+.next/
+out/
+build/
+
+# Environment
+.env
+.env.local
+
+# Local Data (databases, backups)
+data/
+*.db
+*.sqlite*
+*.db-shm
+*.db-wal
+
+# Old database location
+1_database/
+backup_database/
+
+# Large binaries
+*.exe
+*.zip
+ngrok*
+
+# Logs and temporary
+*.log
+result.txt
+push_errors.txt
+check_login_output.txt
+api_response.json
+url.txt
+ngrok_info.json
+migration.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Old/duplicate projects
+newpro/
+backend/
