@@ -1,0 +1,740 @@
+<module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32070] [INFO] Worker exiting (pid: 32070)
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32068] [ERROR] Worker (pid:32069) exited with code 3
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32068] [ERROR] Worker (pid:32070) was sent SIGTERM!
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32068] [ERROR] Shutting down: Master
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32068] [ERROR] Reason: Worker failed to boot.
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32071] [INFO] Starting gunicorn 23.0.0
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32071] [INFO] Listening at: http://127.0.0.1:8000 (32071)
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32071] [INFO] Using worker: uvicorn.workers.UvicornWorker
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32072] [INFO] Booting worker with pid: 32072
+1|fastapi-mcqs  | [2025-12-31 08:53:02 +0000] [32073] [INFO] Booting worker with pid: 32073
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32073] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32073] [INFO] Worker exiting (pid: 32073)
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32072] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32072] [INFO] Worker exiting (pid: 32072)
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32071] [ERROR] Worker (pid:32073) exited with code 3
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32071] [ERROR] Worker (pid:32072) was sent SIGTERM!
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32071] [ERROR] Shutting down: Master
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32071] [ERROR] Reason: Worker failed to boot.
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32074] [INFO] Starting gunicorn 23.0.0
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32074] [INFO] Listening at: http://127.0.0.1:8000 (32074)
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32074] [INFO] Using worker: uvicorn.workers.UvicornWorker
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32075] [INFO] Booting worker with pid: 32075
+1|fastapi-mcqs  | [2025-12-31 08:53:03 +0000] [32076] [INFO] Booting worker with pid: 32076
+1|fastapi-mcqs  | [2025-12-31 08:53:04 +0000] [32075] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:53:04 +0000] [32075] [INFO] Worker exiting (pid: 32075)
+1|fastapi-mcqs  | [2025-12-31 08:53:04 +0000] [32076] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:53:04 +0000] [32076] [INFO] Worker exiting (pid: 32076)
+1|fastapi-mcqs  | [2025-12-31 08:53:04 +0000] [32074] [ERROR] Worker (pid:32075) exited with code 3
+1|fastapi-mcqs  | [2025-12-31 08:53:04 +0000] [32074] [ERROR] Worker (pid:32076) was sent SIGTERM!
+1|fastapi-mcqs  | [2025-12-31 08:53:04 +0000] [32074] [ERROR] Shutting down: Master
+1|fastapi-mcqs  | [2025-12-31 08:53:04 +0000] [32074] [ERROR] Reason: Worker failed to boot.
+1|fastapi-mcqs  | [2025-12-31 08:53:05 +0000] [32077] [INFO] Starting gunicorn 23.0.0
+1|fastapi-mcqs  | [2025-12-31 08:53:05 +0000] [32077] [INFO] Listening at: http://127.0.0.1:8000 (32077)
+1|fastapi-mcqs  | [2025-12-31 08:53:05 +0000] [32077] [INFO] Using worker: uvicorn.workers.UvicornWorker
+1|fastapi-mcqs  | [2025-12-31 08:53:05 +0000] [32078] [INFO] Booting worker with pid: 32078
+1|fastapi-mcqs  | [2025-12-31 08:53:05 +0000] [32079] [INFO] Booting worker with pid: 32079
+1|fastapi-mcqs  | [2025-12-31 08:53:05 +0000] [32078] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:53:05 +0000] [32078] [INFO] Worker exiting (pid: 32078)
+1|fastapi-mcqs  | [2025-12-31 08:53:05 +0000] [32077] [ERROR] Worker (pid:32078) exited with code 3
+1|fastapi-mcqs  | [2025-12-31 08:53:05 +0000] [32077] [ERROR] Worker (pid:32079) was sent SIGTERM!
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32077] [ERROR] Shutting down: Master
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32077] [ERROR] Reason: Worker failed to boot.
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32080] [INFO] Starting gunicorn 23.0.0
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32080] [INFO] Listening at: http://127.0.0.1:8000 (32080)
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32080] [INFO] Using worker: uvicorn.workers.UvicornWorker
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32081] [INFO] Booting worker with pid: 32081
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32082] [INFO] Booting worker with pid: 32082
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32081] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32081] [INFO] Worker exiting (pid: 32081)
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32082] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:53:06 +0000] [32082] [INFO] Worker exiting (pid: 32082)
+1|fastapi-mcqs  | [2025-12-31 08:53:07 +0000] [32080] [ERROR] Worker (pid:32081) exited with code 3
+1|fastapi-mcqs  | [2025-12-31 08:53:07 +0000] [32080] [ERROR] Worker (pid:32082) was sent SIGTERM!
+1|fastapi-mcqs  | [2025-12-31 08:53:07 +0000] [32080] [ERROR] Shutting down: Master
+1|fastapi-mcqs  | [2025-12-31 08:53:07 +0000] [32080] [ERROR] Reason: Worker failed to boot.
+1|fastapi-mcqs  | [2025-12-31 08:53:07 +0000] [32083] [INFO] Starting gunicorn 23.0.0
+1|fastapi-mcqs  | [2025-12-31 08:53:07 +0000] [32083] [INFO] Listening at: http://127.0.0.1:8000 (32083)
+1|fastapi-mcqs  | [2025-12-31 08:53:07 +0000] [32083] [INFO] Using worker: uvicorn.workers.UvicornWorker
+1|fastapi-mcqs  | [2025-12-31 08:53:07 +0000] [32084] [INFO] Booting worker with pid: 32084
+1|fastapi-mcqs  | [2025-12-31 08:53:07 +0000] [32085] [INFO] Booting worker with pid: 32085
+^C
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ pm2 logs fastapi-mcqs
+[TAILING] Tailing last 15 lines for [fastapi-mcqs] process (change the value with --lines option)
+/home/prd-mcqs-jcq/.pm2/logs/fastapi-mcqs-out.log last 15 lines:
+/home/prd-mcqs-jcq/.pm2/logs/fastapi-mcqs-error.log last 15 lines:
+1|fastapi- |     self.halt(reason=inst.reason, exit_status=inst.exit_status)
+1|fastapi- |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 341, in halt
+1|fastapi- |     self.stop()
+1|fastapi- |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 395, in stop
+1|fastapi- |     time.sleep(0.1)
+1|fastapi- |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+1|fastapi- |     self.reap_workers()
+1|fastapi- |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+1|fastapi- |     raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+1|fastapi- | gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+1|fastapi- | [2025-12-31 08:54:38 +0000] [32320] [INFO] Starting gunicorn 23.0.0
+1|fastapi- | [2025-12-31 08:54:38 +0000] [32320] [INFO] Listening at: http://127.0.0.1:8000 (32320)
+1|fastapi- | [2025-12-31 08:54:38 +0000] [32320] [INFO] Using worker: uvicorn.workers.UvicornWorker
+1|fastapi- | [2025-12-31 08:54:38 +0000] [32321] [INFO] Booting worker with pid: 32321
+1|fastapi- | [2025-12-31 08:54:38 +0000] [32322] [INFO] Booting worker with pid: 32322
+
+1|fastapi-mcqs  | [2025-12-31 08:54:38 +0000] [32321] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:54:38 +0000] [32321] [INFO] Worker exiting (pid: 32321)
+1|fastapi-mcqs  | [2025-12-31 08:54:38 +0000] [32322] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:54:38 +0000] [32322] [INFO] Worker exiting (pid: 32322)
+1|fastapi-mcqs  | [2025-12-31 08:54:39 +0000] [32320] [ERROR] Worker (pid:32321) exited with code 3
+1|fastapi-mcqs  | [2025-12-31 08:54:39 +0000] [32320] [ERROR] Worker (pid:32322) was sent SIGTERM!
+1|fastapi-mcqs  | [2025-12-31 08:54:39 +0000] [32320] [ERROR] Shutting down: Master
+1|fastapi-mcqs  | [2025-12-31 08:54:39 +0000] [32320] [ERROR] Reason: Worker failed to boot.
+1|fastapi-mcqs  | [2025-12-31 08:54:39 +0000] [32334] [INFO] Starting gunicorn 23.0.0
+1|fastapi-mcqs  | [2025-12-31 08:54:39 +0000] [32334] [INFO] Listening at: http://127.0.0.1:8000 (32334)
+1|fastapi-mcqs  | [2025-12-31 08:54:39 +0000] [32334] [INFO] Using worker: uvicorn.workers.UvicornWorker
+1|fastapi-mcqs  | [2025-12-31 08:54:39 +0000] [32335] [INFO] Booting worker with pid: 32335
+1|fastapi-mcqs  | [2025-12-31 08:54:39 +0000] [32336] [INFO] Booting worker with pid: 32336
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32335] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32335] [INFO] Worker exiting (pid: 32335)
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32336] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32336] [INFO] Worker exiting (pid: 32336)
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32334] [ERROR] Worker (pid:32335) exited with code 3
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32334] [ERROR] Worker (pid:32336) exited with code 3
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 208, in run
+1|fastapi-mcqs  |     self.sleep()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 359, in sleep
+1|fastapi-mcqs  |     ready = select.select([self.PIPE[0]], [], [], 1.0)
+1|fastapi-mcqs  |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+1|fastapi-mcqs  |     self.reap_workers()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+1|fastapi-mcqs  |     raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+1|fastapi-mcqs  | gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+1|fastapi-mcqs  | During handling of the above exception, another exception occurred:
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/bin/gunicorn", line 7, in <module>
+1|fastapi-mcqs  |     sys.exit(run())
+1|fastapi-mcqs  |              ^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 66, in run
+1|fastapi-mcqs  |     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]", prog=prog).run()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 235, in run
+1|fastapi-mcqs  |     super().run()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 71, in run
+1|fastapi-mcqs  |     Arbiter(self).run()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 228, in run
+1|fastapi-mcqs  |     self.halt(reason=inst.reason, exit_status=inst.exit_status)
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 341, in halt
+1|fastapi-mcqs  |     self.stop()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 395, in stop
+1|fastapi-mcqs  |     time.sleep(0.1)
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 241, in handle_chld
+1|fastapi-mcqs  |     self.reap_workers()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 529, in reap_workers
+1|fastapi-mcqs  |     raise HaltServer(reason, self.WORKER_BOOT_ERROR)
+1|fastapi-mcqs  | gunicorn.errors.HaltServer: <HaltServer 'Worker failed to boot.' 3>
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32337] [INFO] Starting gunicorn 23.0.0
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32337] [INFO] Listening at: http://127.0.0.1:8000 (32337)
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32337] [INFO] Using worker: uvicorn.workers.UvicornWorker
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32338] [INFO] Booting worker with pid: 32338
+1|fastapi-mcqs  | [2025-12-31 08:54:40 +0000] [32339] [INFO] Booting worker with pid: 32339
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32338] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32338] [INFO] Worker exiting (pid: 32338)
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32339] [ERROR] Exception in worker process
+1|fastapi-mcqs  | Traceback (most recent call last):
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/arbiter.py", line 608, in spawn_worker
+1|fastapi-mcqs  |     worker.init_process()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 135, in init_process
+1|fastapi-mcqs  |     self.load_wsgi()
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/workers/base.py", line 147, in load_wsgi
+1|fastapi-mcqs  |     self.wsgi = self.app.wsgi()
+1|fastapi-mcqs  |                 ^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/base.py", line 66, in wsgi
+1|fastapi-mcqs  |     self.callable = self.load()
+1|fastapi-mcqs  |                     ^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 57, in load
+1|fastapi-mcqs  |     return self.load_wsgiapp()
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/app/wsgiapp.py", line 47, in load_wsgiapp
+1|fastapi-mcqs  |     return util.import_app(self.app_uri)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/gunicorn/util.py", line 370, in import_app
+1|fastapi-mcqs  |     mod = importlib.import_module(module)
+1|fastapi-mcqs  |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+1|fastapi-mcqs  |     return _bootstrap._gcd_import(name[level:], package, level)
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+1|fastapi-mcqs  |   File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/main.py", line 6, in <module>
+1|fastapi-mcqs  |     from app.routers import auth, mqs, admin, scraping, tendencias, etl, formatos, users, support, test, notifications, test_serialization, reportes, chatbot
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/app/routers/users.py", line 14, in <module>
+1|fastapi-mcqs  |     router = APIRouter(
+1|fastapi-mcqs  |              ^^^^^^^^^^
+1|fastapi-mcqs  |   File "/home/prd-mcqs-jcq/htdocs/mcqs-jcq.cloud/venv/lib/python3.12/site-packages/fastapi/routing.py", line 916, in __init__
+1|fastapi-mcqs  |     assert not prefix.endswith("/"), (
+1|fastapi-mcqs  |            ^^^^^^^^^^^^^^^^^^^^^^^^
+1|fastapi-mcqs  | AssertionError: A path prefix must not end with '/', as the routes will start with '/'
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32339] [INFO] Worker exiting (pid: 32339)
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32337] [ERROR] Worker (pid:32338) exited with code 3
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32337] [ERROR] Worker (pid:32339) was sent SIGTERM!
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32337] [ERROR] Shutting down: Master
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32337] [ERROR] Reason: Worker failed to boot.
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32340] [INFO] Starting gunicorn 23.0.0
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32340] [INFO] Listening at: http://127.0.0.1:8000 (32340)
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32340] [INFO] Using worker: uvicorn.workers.UvicornWorker
+1|fastapi-mcqs  | [2025-12-31 08:54:41 +0000] [32341] [INFO] Booting worker with pid: 32341
+^C
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ s
+s: command not found
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ git pull
+remote: Enumerating objects: 9, done.
+remote: Counting objects: 100% (9/9), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 5 (delta 4), reused 5 (delta 4), pack-reused 0 (from 0)
+Unpacking objects: 100% (5/5), 392 bytes | 196.00 KiB/s, done.
+From github.com:brayanjhans/proyecto_garantias
+   96acb76..0da794e  main       -> origin/main
+Updating 96acb76..0da794e
+Fast-forward
+ app/routers/users.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ pm2 restart fastapi-mcqs
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fastapi-mcqs](ids: [ 1 ])
+[PM2] [fastapi-mcqs](1) ✓
+┌────┬─────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name            │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼─────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ fastapi-mcqs    │ default     │ N/A     │ fork    │ 33102    │ 0s     │ 1633 │ online    │ 0%       │ 6.1mb    │ prd… │ disabled │
+│ 0  │ nextjs-mcqs     │ default     │ 0.39.1  │ fork    │ 29388    │ 23m    │ 2    │ online    │ 0%       │ 67.9mb   │ prd… │ disabled │
+└────┴─────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ curl -i -X POST https://back.mcqs-jcq.cloud/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"id_corporativo":"admin","password":"qwerty"}'
+HTTP/2 500 
+server: nginx
+date: Wed, 31 Dec 2025 09:05:26 GMT
+content-type: text/plain; charset=utf-8
+content-length: 21
+
+Internal Server Error(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ git pull
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 4 (delta 3), reused 4 (delta 3), pack-reused 0 (from 0)
+Unpacking objects: 100% (4/4), 367 bytes | 367.00 KiB/s, done.
+From github.com:brayanjhans/proyecto_garantias
+   0da794e..745f7c2  main       -> origin/main
+Updating 0da794e..745f7c2
+Fast-forward
+ app/main.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+^C
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ git pull
+Already up to date.
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ pm2 restart fastapi-mcqs
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fastapi-mcqs](ids: [ 1 ])
+[PM2] [fastapi-mcqs](1) ✓
+┌────┬─────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name            │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼─────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ fastapi-mcqs    │ default     │ N/A     │ fork    │ 33146    │ 0s     │ 1634 │ online    │ 0%       │ 5.1mb    │ prd… │ disabled │
+│ 0  │ nextjs-mcqs     │ default     │ 0.39.1  │ fork    │ 29388    │ 31m    │ 2    │ online    │ 0%       │ 68.2mb   │ prd… │ disabled │
+└────┴─────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ pm2 restart fastapi-mcqs
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fastapi-mcqs](ids: [ 1 ])
+[PM2] [fastapi-mcqs](1) ✓
+┌────┬─────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name            │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼─────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ fastapi-mcqs    │ default     │ N/A     │ fork    │ 33458    │ 0s     │ 1635 │ online    │ 0%       │ 4.8mb    │ prd… │ disabled │
+│ 0  │ nextjs-mcqs     │ default     │ 0.39.1  │ fork    │ 29388    │ 33m    │ 2    │ online    │ 0%       │ 68.2mb   │ prd… │ disabled │
+└────┴─────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$ pm2 restart fastapi-mcqs   
+Use --update-env to update environment variables
+[PM2] Applying action restartProcessId on app [fastapi-mcqs](ids: [ 1 ])
+[PM2] [fastapi-mcqs](1) ✓
+┌────┬─────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id │ name            │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├────┼─────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 1  │ fastapi-mcqs    │ default     │ N/A     │ fork    │ 33481    │ 0s     │ 1636 │ online    │ 0%       │ 5.6mb    │ prd… │ disabled │
+│ 0  │ nextjs-mcqs     │ default     │ 0.39.1  │ fork    │ 29388    │ 34m    │ 2    │ online    │ 0%       │ 68.2mb   │ prd… │ disabled │
+└────┴─────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+(venv) prd-mcqs-jcq@srv1237024:~/htdocs/mcqs-jcq.cloud/frontend$

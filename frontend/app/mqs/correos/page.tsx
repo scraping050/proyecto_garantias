@@ -52,7 +52,6 @@ export default function CorreosPage() {
                     icon="fa-inbox"
                     title="Recibidos"
                     value="234"
-                    value="234"
                     color="text-blue-600 dark:text-blue-400"
                     bgColor="bg-blue-50 dark:bg-blue-900/30"
                     borderColor="border-blue-100 dark:border-blue-900/50"
@@ -60,7 +59,6 @@ export default function CorreosPage() {
                 <StatCard
                     icon="fa-paper-plane"
                     title="Enviados"
-                    value="189"
                     value="189"
                     color="text-green-600 dark:text-green-400"
                     bgColor="bg-green-50 dark:bg-green-900/30"
@@ -70,7 +68,6 @@ export default function CorreosPage() {
                     icon="fa-envelope"
                     title="Sin Leer"
                     value="23"
-                    value="23"
                     color="text-orange-600 dark:text-orange-400"
                     bgColor="bg-orange-50 dark:bg-orange-900/30"
                     borderColor="border-orange-100 dark:border-orange-900/50"
@@ -78,7 +75,6 @@ export default function CorreosPage() {
                 <StatCard
                     icon="fa-star"
                     title="Importantes"
-                    value="12"
                     value="12"
                     color="text-yellow-600 dark:text-yellow-400"
                     bgColor="bg-yellow-50 dark:bg-yellow-900/30"
