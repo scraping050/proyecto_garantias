@@ -501,7 +501,7 @@ function UserManagement({ currentUser }: { currentUser: any }) {
             </div>
 
             {/* Users Table */}
-            <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm relative min-h-[200px]">
+            <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm relative min-h-[200px]">
                 {loading ? (
                     <div className="absolute inset-0 flex items-center justify-center bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm z-10">
                         <Loader2 className="w-8 h-8 animate-spin text-purple-600" />
@@ -660,7 +660,7 @@ function EditUserDialog({ open, user, onClose }: { open: boolean, user: any, onC
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">ID Corporativo</label>
                             <input
