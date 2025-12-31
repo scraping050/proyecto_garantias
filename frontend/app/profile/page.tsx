@@ -88,19 +88,21 @@ export default function ProfilePage() {
                                         Información Personal
                                         <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
                                     </button>
-                                    <button
-                                        onClick={() => setActiveSection('security')}
-                                        className={cn(
-                                            "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm",
-                                            activeSection === 'security'
-                                                ? "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400"
-                                                : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50"
-                                        )}
-                                    >
-                                        <Shield className="w-5 h-5" />
-                                        Seguridad y Contraseña
-                                        <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
-                                    </button>
+                                    {isAdminOrDirector && (
+                                        <button
+                                            onClick={() => setActiveSection('security')}
+                                            className={cn(
+                                                "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm",
+                                                activeSection === 'security'
+                                                    ? "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400"
+                                                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50"
+                                            )}
+                                        >
+                                            <Shield className="w-5 h-5" />
+                                            Seguridad y Contraseña
+                                            <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                        </button>
+                                    )}
 
                                     {isAdminOrDirector && (
                                         <button
@@ -126,7 +128,7 @@ export default function ProfilePage() {
                     <div className="flex-1">
                         <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 p-8 min-h-[500px]">
                             {activeSection === 'info' && <PersonalInfoForm user={user} setUser={setUser} />}
-                            {activeSection === 'security' && <SecuritySettings />}
+                            {activeSection === 'security' && isAdminOrDirector && <SecuritySettings />}
                             {activeSection === 'admin' && isAdminOrDirector && <UserManagement currentUser={user} />}
                         </div>
                     </div>
@@ -146,16 +148,41 @@ function PersonalInfoForm({ user, setUser }: any) {
         phone: user?.phone || ''
     });
 
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+
     const handleChange = (e: any) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSave = () => {
-        const newUser = { ...user, ...formData };
-        localStorage.setItem('user', JSON.stringify(newUser));
-        setUser(newUser);
-        window.dispatchEvent(new Event('userUpdated'));
-        setIsEditing(false);
+    const handleSave = async () => {
+        setLoading(true);
+        setError('');
+        setSuccess('');
+        try {
+            const response = await api.put('/api/users/me', {
+                nombre: formData.nombre,
+                email: formData.email,
+                job_title: formData.job_title,
+                // username not editable? 
+                // phone not in API?
+            });
+            const newUser = { ...user, ...response.data };
+            localStorage.setItem('user', JSON.stringify(newUser));
+            setUser(newUser);
+            window.dispatchEvent(new Event('userUpdated'));
+            setSuccess('Información actualizada correctamente');
+            setTimeout(() => {
+                setSuccess('');
+                setIsEditing(false);
+            }, 1000);
+        } catch (err: any) {
+            console.error('Error saving profile', err);
+            setError(err.response?.data?.detail || 'Error al guardar los cambios');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -171,13 +198,25 @@ function PersonalInfoForm({ user, setUser }: any) {
                     </Button>
                 ) : (
                     <div className="flex gap-2">
-                        <Button variant="ghost" onClick={() => setIsEditing(false)} className="rounded-xl">Cancelar</Button>
-                        <Button onClick={handleSave} className="gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white">
-                            <Save className="w-4 h-4" /> Guardar
+                        <Button variant="ghost" onClick={() => setIsEditing(false)} className="rounded-xl" disabled={loading}>Cancelar</Button>
+                        <Button onClick={handleSave} className="gap-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white" disabled={loading}>
+                            {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                            {loading ? 'Guardando...' : 'Guardar'}
                         </Button>
                     </div>
                 )}
             </div>
+
+            {error && (
+                <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 p-3 rounded-lg text-sm mb-4">
+                    {error}
+                </div>
+            )}
+            {success && (
+                <div className="bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 p-3 rounded-lg text-sm mb-4">
+                    {success}
+                </div>
+            )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -260,12 +299,7 @@ function SecuritySettings() {
                 </div>
 
                 <div className="space-y-4 max-w-lg">
-                    <input type="password" placeholder="Contraseña Actual" className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500/20" />
-                    <div className="grid grid-cols-2 gap-4">
-                        <input type="password" placeholder="Nueva Contraseña" className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500/20" />
-                        <input type="password" placeholder="Confirmar Contraseña" className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500/20" />
-                    </div>
-                    <Button className="bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-medium">Actualizar Contraseña</Button>
+                    <PasswordChangeForm />
                 </div>
             </div>
 
@@ -281,12 +315,7 @@ function SecuritySettings() {
                 </div>
 
                 <div className="space-y-4 max-w-lg">
-                    <input type="password" placeholder="PIN Actual (6 dígitos)" className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-purple-500/20 tracking-widest text-center font-mono" maxLength={6} />
-                    <div className="grid grid-cols-2 gap-4">
-                        <input type="password" placeholder="Nuevo PIN" className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-purple-500/20 tracking-widest text-center font-mono" maxLength={6} />
-                        <input type="password" placeholder="Confirmar PIN" className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-purple-500/20 tracking-widest text-center font-mono" maxLength={6} />
-                    </div>
-                    <Button className="bg-purple-600 text-white rounded-xl hover:bg-purple-700 font-medium">Actualizar PIN</Button>
+                    <PinChangeForm />
                 </div>
             </div>
         </div>
@@ -495,11 +524,11 @@ function UserManagement({ currentUser }: { currentUser: any }) {
                 onVerify={handlePinVerify}
                 title="Confirmar Eliminación"
                 description={userToDelete ? `Para eliminar al usuario ${userToDelete.nombre}, ingresa tu PIN de seguridad personal.` : ''}
-            </PinVerificationModal>
+            />
 
-            { showCreateModal && <CreateUserModal onClose={() => { setShowCreateModal(false); fetchUsers(); }} /> }
-    { editingUser && <EditUserDialog open={!!editingUser} user={editingUser} onClose={() => { setEditingUser(null); fetchUsers(); }} /> }
-    { resettingPasswordUser && <ResetPasswordDialog open={!!resettingPasswordUser} user={resettingPasswordUser} onClose={() => setResettingPasswordUser(null)} /> }
+            {showCreateModal && <CreateUserModal onClose={() => { setShowCreateModal(false); fetchUsers(); }} />}
+            {editingUser && <EditUserDialog open={!!editingUser} user={editingUser} onClose={() => { setEditingUser(null); fetchUsers(); }} />}
+            {resettingPasswordUser && <ResetPasswordDialog open={!!resettingPasswordUser} user={resettingPasswordUser} onClose={() => setResettingPasswordUser(null)} />}
         </div >
     );
 }
@@ -719,6 +748,150 @@ function CreateUserModal({ onClose }: { onClose: () => void }) {
                     </div>
                 </form>
             </div>
+        </div>
+    );
+}
+
+function PasswordChangeForm() {
+    const [passData, setPassData] = useState({
+        current_password: '',
+        new_password: '',
+        confirm_password: ''
+    });
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState({ type: '', text: '' });
+
+    const handlePasswordChange = async () => {
+        if (passData.new_password !== passData.confirm_password) {
+            setMessage({ type: 'error', text: 'Las nuevas contraseñas no coinciden' });
+            return;
+        }
+        setLoading(true);
+        setMessage({ type: '', text: '' });
+        try {
+            await api.put('/api/users/me/password', passData);
+            setMessage({ type: 'success', text: 'Contraseña actualizada correctamente' });
+            setPassData({ current_password: '', new_password: '', confirm_password: '' });
+        } catch (err: any) {
+            setMessage({ type: 'error', text: err.response?.data?.detail || 'Error al actualizar contraseña' });
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="space-y-4">
+            {message.text && (
+                <div className={`p-3 rounded-lg text-sm flex items-center gap-2 ${message.type === 'error' ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'}`}>
+                    {message.text}
+                </div>
+            )}
+            <input
+                type="password"
+                placeholder="Contraseña Actual"
+                className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500/20"
+                value={passData.current_password}
+                onChange={(e) => setPassData({ ...passData, current_password: e.target.value })}
+            />
+            <div className="grid grid-cols-2 gap-4">
+                <input
+                    type="password"
+                    placeholder="Nueva Contraseña"
+                    className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500/20"
+                    value={passData.new_password}
+                    onChange={(e) => setPassData({ ...passData, new_password: e.target.value })}
+                />
+                <input
+                    type="password"
+                    placeholder="Confirmar Contraseña"
+                    className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-blue-500/20"
+                    value={passData.confirm_password}
+                    onChange={(e) => setPassData({ ...passData, confirm_password: e.target.value })}
+                />
+            </div>
+            <Button
+                onClick={handlePasswordChange}
+                disabled={loading}
+                className="bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-medium"
+            >
+                {loading ? 'Actualizando...' : 'Actualizar Contraseña'}
+            </Button>
+        </div>
+    );
+}
+
+function PinChangeForm() {
+    const [pinData, setPinData] = useState({
+        current_pin: '',
+        new_pin: '',
+        confirm_pin: ''
+    });
+    const [loading, setLoading] = useState(false);
+    const [message, setMessage] = useState({ type: '', text: '' });
+
+    const handlePinChange = async () => {
+        if (pinData.new_pin !== pinData.confirm_pin) {
+            setMessage({ type: 'error', text: 'Los nuevos PINs no coinciden' });
+            return;
+        }
+        if (pinData.new_pin.length !== 6 || !/^\d+$/.test(pinData.new_pin)) {
+            setMessage({ type: 'error', text: 'El PIN debe ser de 6 dígitos numéricos' });
+            return;
+        }
+
+        setLoading(true);
+        setMessage({ type: '', text: '' });
+        try {
+            await api.put('/api/users/me/pin', pinData);
+            setMessage({ type: 'success', text: 'PIN actualizado correctamente' });
+            setPinData({ current_pin: '', new_pin: '', confirm_pin: '' });
+        } catch (err: any) {
+            setMessage({ type: 'error', text: err.response?.data?.detail || 'Error al actualizar PIN' });
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="space-y-4">
+            {message.text && (
+                <div className={`p-3 rounded-lg text-sm flex items-center gap-2 ${message.type === 'error' ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'}`}>
+                    {message.text}
+                </div>
+            )}
+            <input
+                type="password"
+                placeholder="PIN Actual (6 dígitos)"
+                className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-purple-500/20 tracking-widest text-center font-mono"
+                maxLength={6}
+                value={pinData.current_pin}
+                onChange={(e) => setPinData({ ...pinData, current_pin: e.target.value })}
+            />
+            <div className="grid grid-cols-2 gap-4">
+                <input
+                    type="password"
+                    placeholder="Nuevo PIN"
+                    className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-purple-500/20 tracking-widest text-center font-mono"
+                    maxLength={6}
+                    value={pinData.new_pin}
+                    onChange={(e) => setPinData({ ...pinData, new_pin: e.target.value })}
+                />
+                <input
+                    type="password"
+                    placeholder="Confirmar PIN"
+                    className="w-full p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 outline-none focus:ring-2 focus:ring-purple-500/20 tracking-widest text-center font-mono"
+                    maxLength={6}
+                    value={pinData.confirm_pin}
+                    onChange={(e) => setPinData({ ...pinData, confirm_pin: e.target.value })}
+                />
+            </div>
+            <Button
+                onClick={handlePinChange}
+                disabled={loading}
+                className="bg-purple-600 text-white rounded-xl hover:bg-purple-700 font-medium"
+            >
+                {loading ? 'Actualizando...' : 'Actualizar PIN'}
+            </Button>
         </div>
     );
 }
