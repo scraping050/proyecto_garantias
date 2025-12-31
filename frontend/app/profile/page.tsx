@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { User, Mail, Briefcase, Camera, Key, Lock, Shield, Smartphone, PenLine, ChevronRight, Save, X, MoreVertical, Trash2, Edit, ShieldAlert, Plus, Search, Loader2 } from 'lucide-react';
 import { HeaderActions } from '@/components/layout/header-actions';
 import { Button } from '@/components/ui/button';
@@ -22,6 +22,32 @@ export default function ProfilePage() {
         }
         setLoading(false);
     }, []);
+
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const handleAvatarClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const res = await api.post('/api/users/me/avatar', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
+            const updatedUser = { ...user, avatar_url: res.data.url };
+            setUser(updatedUser);
+            localStorage.setItem('user', JSON.stringify(updatedUser));
+            window.dispatchEvent(new Event('userUpdated'));
+        } catch (error) {
+            console.error('Error uploading avatar:', error);
+        }
+    };
 
     if (loading) return null;
 
@@ -60,77 +86,87 @@ export default function ProfilePage() {
                                             </div>
                                         )}
                                     </div>
-                                    <button className="absolute bottom-1 right-1 p-2 bg-blue-600 rounded-full text-white shadow-lg border-2 border-white dark:border-slate-800 hover:bg-blue-700 transition-colors transform hover:scale-105">
+                                    <button
+                                        onClick={handleAvatarClick}
+                                        className="absolute bottom-1 right-1 p-2 bg-blue-600 rounded-full text-white shadow-lg border-2 border-white dark:border-slate-800 hover:bg-blue-700 transition-colors transform hover:scale-105"
+                                    >
                                         <Camera className="w-4 h-4" />
                                     </button>
+                                    <input
+                                        type="file"
+                                        ref={fileInputRef}
+                                        className="hidden"
+                                        accept="image/*"
+                                        onChange={handleAvatarChange}
+                                    />
                                 </div>
-                                <h2 className="text-xl font-bold text-slate-900 dark:text-white text-center">{user?.nombre || 'Usuario'}</h2>
-                                <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">{user?.email}</p>
-                                <span className={cn(
-                                    "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider",
-                                    isAdminOrDirector ? "bg-purple-100 text-purple-700" : "bg-blue-100 text-blue-700"
-                                )}>
-                                    {user?.role || 'Colaborador'}
-                                </span>
                             </div>
-                            <div className="p-4">
-                                <nav className="space-y-1">
+                            <h2 className="text-xl font-bold text-slate-900 dark:text-white text-center">{user?.nombre || 'Usuario'}</h2>
+                            <p className="text-slate-500 dark:text-slate-400 text-sm mb-4">{user?.email}</p>
+                            <span className={cn(
+                                "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider",
+                                isAdminOrDirector ? "bg-purple-100 text-purple-700" : "bg-blue-100 text-blue-700"
+                            )}>
+                                {user?.role || 'Colaborador'}
+                            </span>
+                        </div>
+                        <div className="p-4">
+                            <nav className="space-y-1">
+                                <button
+                                    onClick={() => setActiveSection('info')}
+                                    className={cn(
+                                        "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm",
+                                        activeSection === 'info'
+                                            ? "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400"
+                                            : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50"
+                                    )}
+                                >
+                                    <User className="w-5 h-5" />
+                                    Información Personal
+                                    <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                </button>
+                                {isAdminOrDirector && (
                                     <button
-                                        onClick={() => setActiveSection('info')}
+                                        onClick={() => setActiveSection('security')}
                                         className={cn(
                                             "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm",
-                                            activeSection === 'info'
+                                            activeSection === 'security'
                                                 ? "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400"
                                                 : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50"
                                         )}
                                     >
-                                        <User className="w-5 h-5" />
-                                        Información Personal
+                                        <Shield className="w-5 h-5" />
+                                        Seguridad y Contraseña
                                         <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
                                     </button>
-                                    {isAdminOrDirector && (
-                                        <button
-                                            onClick={() => setActiveSection('security')}
-                                            className={cn(
-                                                "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm",
-                                                activeSection === 'security'
-                                                    ? "bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400"
-                                                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50"
-                                            )}
-                                        >
-                                            <Shield className="w-5 h-5" />
-                                            Seguridad y Contraseña
-                                            <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
-                                        </button>
-                                    )}
+                                )}
 
-                                    {isAdminOrDirector && (
-                                        <button
-                                            onClick={() => setActiveSection('admin')}
-                                            className={cn(
-                                                "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm mt-4 border-t border-slate-100 dark:border-slate-700 pt-4",
-                                                activeSection === 'admin'
-                                                    ? "bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400"
-                                                    : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50"
-                                            )}
-                                        >
-                                            <ShieldAlert className="w-5 h-5" />
-                                            Administración
-                                            <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
-                                        </button>
-                                    )}
-                                </nav>
-                            </div>
+                                {isAdminOrDirector && (
+                                    <button
+                                        onClick={() => setActiveSection('admin')}
+                                        className={cn(
+                                            "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium text-sm mt-4 border-t border-slate-100 dark:border-slate-700 pt-4",
+                                            activeSection === 'admin'
+                                                ? "bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400"
+                                                : "text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/50"
+                                        )}
+                                    >
+                                        <ShieldAlert className="w-5 h-5" />
+                                        Administración
+                                        <ChevronRight className="w-4 h-4 ml-auto opacity-50" />
+                                    </button>
+                                )}
+                            </nav>
                         </div>
                     </div>
+                </div>
 
-                    {/* Main Content */}
-                    <div className="flex-1">
-                        <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 p-8 min-h-[500px]">
-                            {activeSection === 'info' && <PersonalInfoForm user={user} setUser={setUser} />}
-                            {activeSection === 'security' && isAdminOrDirector && <SecuritySettings />}
-                            {activeSection === 'admin' && isAdminOrDirector && <UserManagement currentUser={user} />}
-                        </div>
+                {/* Main Content */}
+                <div className="flex-1">
+                    <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 p-8 min-h-[500px]">
+                        {activeSection === 'info' && <PersonalInfoForm user={user} setUser={setUser} />}
+                        {activeSection === 'security' && isAdminOrDirector && <SecuritySettings />}
+                        {activeSection === 'admin' && isAdminOrDirector && <UserManagement currentUser={user} />}
                     </div>
                 </div>
             </div>
@@ -179,7 +215,8 @@ function PersonalInfoForm({ user, setUser }: any) {
             }, 1000);
         } catch (err: any) {
             console.error('Error saving profile', err);
-            setError(err.response?.data?.detail || 'Error al guardar los cambios');
+            const errorMsg = err.response?.data?.detail;
+            setError(typeof errorMsg === 'string' ? errorMsg : 'Error al guardar los cambios');
         } finally {
             setLoading(false);
         }
@@ -553,7 +590,8 @@ function EditUserDialog({ open, user, onClose }: { open: boolean, user: any, onC
             onClose();
         } catch (err: any) {
             console.error(err);
-            setError(err.response?.data?.detail || 'Error al actualizar usuario');
+            const detail = err.response?.data?.detail;
+            setError(typeof detail === 'string' ? detail : 'Error al actualizar usuario');
         } finally {
             setLoading(false);
         }
@@ -662,7 +700,8 @@ function ResetPasswordDialog({ open, user, onClose }: { open: boolean, user: any
             onClose();
         } catch (e: any) {
             console.error(e);
-            setError(e.response?.data?.detail || 'Error al restablecer contraseña');
+            const detail = e.response?.data?.detail;
+            setError(typeof detail === 'string' ? detail : 'Error al restablecer contraseña');
         } finally {
             setLoading(false);
         }
@@ -729,7 +768,8 @@ function CreateUserModal({ onClose }: { onClose: () => void }) {
             onClose(); // This will trigger fetchUsers
         } catch (err: any) {
             console.error('Error creating user:', err);
-            setError(err.response?.data?.detail || 'Error al crear el usuario');
+            const detail = err.response?.data?.detail;
+            setError(typeof detail === 'string' ? detail : 'Error al crear el usuario');
         } finally {
             setLoading(false);
         }
