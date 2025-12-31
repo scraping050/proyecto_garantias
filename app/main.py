@@ -18,12 +18,12 @@ app = FastAPI(
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://www.mcqs-jcq.cloud", "https://mcqs-jcq.cloud"],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
-    expose_headers=["Content-Disposition"],  # Allow frontend to read Content-Disposition header
 )
+
 
 # Include routers - New system
 app.include_router(test.router)  # Test router first
