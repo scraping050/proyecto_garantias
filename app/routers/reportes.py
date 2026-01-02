@@ -302,3 +302,132 @@ def get_reporte_por_provincia(departamento: str, db: Session = Depends(get_db)):
         }
     except Exception as e:
         return {"success": False, "error": str(e)}
+
+@router.get("/por-tiempo")
+def get_reporte_por_tiempo(db: Session = Depends(get_db)):
+    """
+    Endpoint for StatisticsChart.
+    Returns tenders grouped by year and month.
+    """
+    try:
+        sql = text("""
+            SELECT 
+                YEAR(fecha_publicacion) as anio,
+                MONTH(fecha_publicacion) as mes_num,
+                DATE_FORMAT(fecha_publicacion, '%b') as mes_nombre,
+                COUNT(*) as total
+            FROM licitaciones_cabecera
+            WHERE fecha_publicacion IS NOT NULL
+            GROUP BY YEAR(fecha_publicacion), MONTH(fecha_publicacion)
+            ORDER BY anio DESC, mes_num ASC
+        """)
+        result = db.execute(sql).fetchall()
+        
+        # Process data into expected format: { "2024": { months: [], licitaciones: [] } }
+        data = {}
+        
+        # Initialize structure for years found
+        for row in result:
+            anio = str(row[0])
+            if anio not in data:
+                data[anio] = {"months": [], "licitaciones": []}
+        
+        # Fill data
+        for row in result:
+            anio = str(row[0])
+            mes = row[2] # Short month name
+            total = row[3]
+            
+            data[anio]["months"].append(mes)
+            data[anio]["licitaciones"].append(total)
+            
+        return {
+            "success": True,
+            "data": data
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+@router.get("/por-entidad-financiera")
+def get_reporte_por_entidad_financiera(db: Session = Depends(get_db)):
+    """
+    Endpoint for TopEntidadesFinancieras.
+    """
+    try:
+        # Check if we have data in adjudicaciones
+        check_sql = text("SELECT COUNT(*) FROM licitaciones_adjudicaciones")
+        count = db.execute(check_sql).scalar()
+        
+        if count > 0:
+            sql = text("""
+                SELECT 
+                    entidad_financiera,
+                    COUNT(*) as total,
+                    COALESCE(SUM(monto_adjudicado), 0) as monto_total,
+                    COUNT(DISTINCT c.departamento) as departamentos_atendidos
+                FROM licitaciones_adjudicaciones a
+                LEFT JOIN licitaciones_cabecera c ON a.id_convocatoria = c.id_convocatoria
+                WHERE a.entidad_financiera IS NOT NULL 
+                  AND a.entidad_financiera != ''
+                  AND a.entidad_financiera != 'SIN_GARANTIA'
+                  AND a.entidad_financiera NOT LIKE '%ERROR%'
+                GROUP BY entidad_financiera
+                ORDER BY total DESC
+                LIMIT 20
+            """)
+            result = db.execute(sql).fetchall()
+            entidades = []
+            for row in result:
+                entidades.append({
+                    "entidad_financiera": row[0],
+                    "total": row[1],
+                    "monto_total": str(row[2]),
+                    "departamentos_atendidos": row[3],
+                    "categorias_atendidas": 0 # Simplified
+                })
+        else:
+            # Fallback returning empty list
+            entidades = []
+
+        return {
+            "success": True,
+            "data": {
+                "entidades": entidades
+            }
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+@router.get("/por-estado")
+def get_reporte_por_estado(db: Session = Depends(get_db)):
+    """
+    Endpoint for MonthlySalesChart (Licitaciones por Estado).
+    """
+    try:
+        sql = text("""
+            SELECT 
+                estado_proceso,
+                COUNT(*) as total
+            FROM licitaciones_cabecera
+            WHERE estado_proceso IS NOT NULL AND estado_proceso != ''
+            GROUP BY estado_proceso
+            ORDER BY total DESC
+        """)
+        result = db.execute(sql).fetchall()
+        
+        estados = []
+        for row in result:
+            estados.append({
+                "estado": row[0].replace('_', ' '),
+                "total": row[1],
+                "retencion": "0" # Placeholder
+            })
+            
+        return {
+            "success": True,
+            "data": {
+                "estados_proceso": estados
+            }
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
