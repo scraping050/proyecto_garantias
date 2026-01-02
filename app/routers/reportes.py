@@ -203,3 +203,102 @@ def generar_reporte(request: GenerarReporteRequest, db: Session = Depends(get_db
             "success": False,
             "error": str(e)
         }
+
+@router.get("/resumen-ejecutivo")
+def get_resumen_ejecutivo(db: Session = Depends(get_db)):
+    """
+    Endpoint for EcommerceMetrics card.
+    Returns total tenders and total adjudicated amount.
+    """
+    try:
+        sql = text("""
+            SELECT 
+                COUNT(*) as total_licitaciones,
+                COALESCE(SUM(monto_estimado), 0) as monto_total
+            FROM licitaciones_cabecera
+        """)
+        result = db.execute(sql).fetchone()
+        
+        return {
+            "success": True,
+            "data": {
+                "total_licitaciones": result[0] or 0,
+                "monto_total": float(result[1]) if result[1] else 0
+            }
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+@router.get("/por-departamento")
+def get_reporte_por_departamento(db: Session = Depends(get_db)):
+    """
+    Endpoint for DemographicCard.
+    Returns list of departments with count and amount.
+    """
+    try:
+        sql = text("""
+            SELECT 
+                departamento,
+                COUNT(*) as total,
+                COALESCE(SUM(monto_estimado), 0) as monto_total
+            FROM licitaciones_cabecera
+            WHERE departamento IS NOT NULL AND departamento != ''
+            GROUP BY departamento
+            ORDER BY total DESC
+        """)
+        result = db.execute(sql).fetchall()
+        
+        departamentos = []
+        for row in result:
+            departamentos.append({
+                "departamento": row[0],
+                "total": row[1],
+                "monto_total": float(row[2]) if row[2] else 0
+            })
+            
+        return {
+            "success": True,
+            "data": {
+                "departamentos": departamentos
+            }
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+@router.get("/por-provincia/{departamento}")
+def get_reporte_por_provincia(departamento: str, db: Session = Depends(get_db)):
+    """
+    Endpoint for DemographicCard drill-down.
+    Returns list of provinces for a specific department.
+    """
+    try:
+        sql = text("""
+            SELECT 
+                provincia,
+                COUNT(*) as total,
+                COALESCE(SUM(monto_estimado), 0) as monto_total
+            FROM licitaciones_cabecera
+            WHERE departamento = :dept 
+              AND provincia IS NOT NULL 
+              AND provincia != ''
+            GROUP BY provincia
+            ORDER BY total DESC
+        """)
+        result = db.execute(sql, {"dept": departamento}).fetchall()
+        
+        provincias = []
+        for row in result:
+            provincias.append({
+                "provincia": row[0],
+                "total": row[1],
+                "monto_total": float(row[2]) if row[2] else 0
+            })
+            
+        return {
+            "success": True,
+            "data": {
+                "provincias": provincias
+            }
+        }
+    except Exception as e:
+        return {"success": False, "error": str(e)}
