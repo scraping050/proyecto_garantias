@@ -7,7 +7,7 @@ module.exports = {
             script: "npx",
             args: "serve out -l 3002",
             env: {
-                NEXT_PUBLIC_API_URL: "https://api.mcqs-jcq.com"
+                NEXT_PUBLIC_API_URL: "https://mcqs-jcq.com"
             }
         },
         {
@@ -16,7 +16,7 @@ module.exports = {
             script: "npm",
             args: "start",
             env: {
-                NEXT_PUBLIC_API_URL: "https://api.mcqs-jcq.com",
+                NEXT_PUBLIC_API_URL: "https://mcqs-jcq.com",
                 PORT: 3000
             }
         },
