@@ -10,6 +10,8 @@ import { ExportButtons } from "@/components/reports/ExportButtons";
 import { ColumnSelector } from "@/components/reports/ColumnSelector";
 import { exportToPDF, exportToExcel, exportToCSV } from "@/lib/exportUtils";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
 // Helper hook
 function useDebounce<T>(value: T, delay: number): T {
     const [debouncedValue, setDebouncedValue] = useState(value);
@@ -116,7 +118,7 @@ function ReportesContent() {
     const fetchReport = async (currentFilters: SearchFilters, currentType: ReportType) => {
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:5000/api/reportes/generar', {
+            const response = await fetch(`${API_BASE_URL}/api/reportes/generar`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

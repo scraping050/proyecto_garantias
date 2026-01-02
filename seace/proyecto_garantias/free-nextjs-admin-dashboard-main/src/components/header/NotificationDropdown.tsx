@@ -6,6 +6,8 @@ import { Dropdown } from "../ui/dropdown/Dropdown";
 import { DropdownItem } from "../ui/dropdown/DropdownItem";
 import type { Notification } from "@/types/notification";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
 export default function NotificationDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -27,7 +29,7 @@ export default function NotificationDropdown() {
     try {
       setLoading(true);
       // Fetch latest 5 unread or all notifications
-      const response = await fetch('http://localhost:5000/api/notificaciones?page=1&per_page=5');
+      const response = await fetch(`${ API_BASE_URL } /api/notificaciones ? page = 1 & per_page=5`);
       const data = await response.json();
       if (data.success) {
         setNotifications(data.data);
@@ -41,7 +43,7 @@ export default function NotificationDropdown() {
 
   const fetchUnreadCount = async () => {
       try {
-          const response = await fetch('http://localhost:5000/api/notificaciones/count');
+          const response = await fetch(`${ API_BASE_URL } /api/notificaciones / count`);
           const data = await response.json();
           if (data.success) {
               setUnreadCount(data.count);
@@ -61,7 +63,7 @@ export default function NotificationDropdown() {
   const handleMarkAsRead = async (e: React.MouseEvent, id: number) => {
     e.stopPropagation();
     try {
-        await fetch(`http://localhost:5000/api/notificaciones/${id}/read`, { method: 'PUT' });
+        await fetch(`${ API_BASE_URL } /api/notificaciones / ${ id }/read`, { method: 'PUT' });
 // Update local state
 setNotifications(prev => prev.map(n => n.id === id ? { ...n, leida: true } : n));
 setUnreadCount(prev => Math.max(0, prev - 1));
@@ -149,8 +151,8 @@ return (
                 <p className="text-xs text-gray-500 mt-1">
                   {notification.estado_anterior} <span className="mx-1">→</span>
                   <span className={`font-medium ${notification.estado_nuevo === 'ADJUDICADO' ? 'text-green-600' :
-                      notification.estado_nuevo === 'NULO' ? 'text-red-600' :
-                        notification.estado_nuevo === 'DESIERTO' ? 'text-orange-600' : 'text-gray-700'
+                    notification.estado_nuevo === 'NULO' ? 'text-red-600' :
+                      notification.estado_nuevo === 'DESIERTO' ? 'text-orange-600' : 'text-gray-700'
                     }`}>
                     {notification.estado_nuevo}
                   </span>

@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import type { SearchFilters } from "@/types/licitacion";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
 interface SearchFiltersProps {
     onFilterChange: (filters: SearchFilters) => void;
     showTitle?: boolean;
@@ -82,7 +84,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
         const fetchSuggestions = async () => {
             if (filters.search && filters.search.length >= 2) {
                 try {
-                    const response = await fetch(`http://localhost:5000/api/licitaciones/suggestions?q=${encodeURIComponent(filters.search)}`);
+                    const response = await fetch(`${API_BASE_URL}/api/licitaciones/suggestions?q=${encodeURIComponent(filters.search)}`);
                     const data = await response.json();
                     setSuggestions(data.data || []);
                     setShowSuggestions(true);
@@ -111,7 +113,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
     // ... fetch functions ...
     const fetchDepartamentos = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/filtros/departamentos");
+            const response = await fetch(`${API_BASE_URL}/api/filtros/departamentos`);
             const data = await response.json();
             setDepartamentos(data.data || []);
         } catch (error) {
@@ -121,7 +123,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
 
     const fetchProvincias = async (departamento: string) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/filtros/provincias?departamento=${encodeURIComponent(departamento)}`);
+            const response = await fetch(`${API_BASE_URL}/api/filtros/provincias?departamento=${encodeURIComponent(departamento)}`);
             const data = await response.json();
             setProvincias(data.data || []);
         } catch (error) {
@@ -131,7 +133,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
 
     const fetchDistritos = async (provincia: string) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/filtros/distritos?provincia=${encodeURIComponent(provincia)}`);
+            const response = await fetch(`${API_BASE_URL}/api/filtros/distritos?provincia=${encodeURIComponent(provincia)}`);
             const data = await response.json();
             setDistritos(data.data || []);
         } catch (error) {
@@ -141,7 +143,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
 
     const fetchEstados = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/filtros/estados");
+            const response = await fetch(`${API_BASE_URL}/api/filtros/estados`);
             const data = await response.json();
             setEstados(data.data || []);
         } catch (error) {
@@ -151,7 +153,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
 
     const fetchCategorias = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/filtros/categorias");
+            const response = await fetch(`${API_BASE_URL}/api/filtros/categorias`);
             const data = await response.json();
             setCategorias(data.data || []);
         } catch (error) {
@@ -161,7 +163,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
 
     const fetchCompradores = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/filtros/compradores");
+            const response = await fetch(`${API_BASE_URL}/api/filtros/compradores`);
             const data = await response.json();
             setCompradores(data.data || []);
         } catch (error) {
@@ -171,7 +173,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
 
     const fetchAseguradoras = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/filtros/aseguradoras");
+            const response = await fetch(`${API_BASE_URL}/api/filtros/aseguradoras`);
             const data = await response.json();
             setAseguradoras(data.data || []);
         } catch (error) {
@@ -181,7 +183,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
 
     const fetchYears = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/filtros/years");
+            const response = await fetch(`${API_BASE_URL}/api/filtros/years`);
             const data = await response.json();
             setYears(data.data || []);
         } catch (error) {
@@ -191,7 +193,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
 
     const fetchMeses = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/filtros/meses");
+            const response = await fetch(`${API_BASE_URL}/api/filtros/meses`);
             const data = await response.json();
             setMeses(data.data || []);
         } catch (error) {
@@ -201,7 +203,7 @@ export const SearchFiltersComponent: React.FC<SearchFiltersProps> = ({
 
     const fetchTiposGarantia = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/filtros/tipos-garantia");
+            const response = await fetch(`${API_BASE_URL}/api/filtros/tipos-garantia`);
             const data = await response.json();
             // Filtrar explícitamente POLIZA por si el backend está en caché o pendiente de reinicio
             const filteredData = (data.data || []).filter((t: string) => t && !t.toUpperCase().includes('POLIZA'));

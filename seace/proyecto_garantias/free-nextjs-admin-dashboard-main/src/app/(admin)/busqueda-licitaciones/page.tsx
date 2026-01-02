@@ -6,6 +6,8 @@ import { SearchFiltersComponent } from "@/components/search/SearchFilters";
 import { LicitacionCard } from "@/components/search/LicitacionCard";
 import type { Licitacion, SearchFilters } from "@/types/licitacion";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
 // Helper hook since we are not using a shared lib
 function useDebounce<T>(value: T, delay: number): T {
     const [debouncedValue, setDebouncedValue] = useState(value);
@@ -99,7 +101,7 @@ function BusquedaContent() {
             queryParams.append('per_page', perPage.toString());
             queryParams.append('sort', sort);
 
-            const url = `http://localhost:5000/api/licitaciones?${queryParams}`;
+            const url = `${API_BASE_URL}/api/licitaciones?${queryParams}`;
             const response = await fetch(url);
             const data = await response.json();
 

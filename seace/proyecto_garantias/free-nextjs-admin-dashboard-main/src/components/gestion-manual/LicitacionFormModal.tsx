@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import type { Licitacion, AdjudicacionDetalle, ConsorcioMember } from "@/types/licitacion";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
 interface LicitacionFormModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -46,7 +48,7 @@ export const LicitacionFormModal: React.FC<LicitacionFormModalProps> = ({
             if (mode === "edit" && licitacion?.id_convocatoria) {
                 setIsLoadingDetails(true);
                 try {
-                    const response = await fetch(`http://localhost:5000/api/licitaciones/${licitacion.id_convocatoria}`);
+                    const response = await fetch(`${API_BASE_URL}/api/licitaciones/${licitacion.id_convocatoria}`);
                     const result = await response.json();
 
                     if (result.success && result.data) {

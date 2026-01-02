@@ -13,6 +13,8 @@ import Badge from "@/components/ui/badge/Badge";
 
 import { useSearchParams } from "next/navigation";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+
 function NotificacionesContent() {
     const searchParams = useSearchParams();
     const highlightId = searchParams.get("highlight");
@@ -85,7 +87,7 @@ function NotificacionesContent() {
             setLoading(true);
             const leidaParam = filter === "all" ? "" : `&leida=${filter === "read"}`;
             const response = await fetch(
-                `http://localhost:5000/api/notificaciones?page=${currentPage}&per_page=${perPage}${leidaParam}`
+                `${API_BASE_URL}/api/notificaciones?page=${currentPage}&per_page=${perPage}${leidaParam}`
             );
             const data: NotificationsResponse = await response.json();
 
@@ -123,7 +125,7 @@ function NotificacionesContent() {
 
     const handleMarkAsRead = async (id: number) => {
         try {
-            await fetch(`http://localhost:5000/api/notificaciones/${id}/read`, {
+            await fetch(`${API_BASE_URL}/api/notificaciones/${id}/read`, {
                 method: "PUT",
             });
             fetchNotifications();
@@ -134,7 +136,7 @@ function NotificacionesContent() {
 
     const handleMarkAllAsRead = async () => {
         try {
-            await fetch("http://localhost:5000/api/notificaciones/read-all", {
+            await fetch(`${API_BASE_URL}/api/notificaciones/read-all`, {
                 method: "PUT",
             });
             fetchNotifications();
@@ -147,7 +149,7 @@ function NotificacionesContent() {
         if (!confirm("¿Estás seguro de eliminar esta notificación?")) return;
 
         try {
-            await fetch(`http://localhost:5000/api/notificaciones/${id}`, {
+            await fetch(`${API_BASE_URL}/api/notificaciones/${id}`, {
                 method: "DELETE",
             });
             fetchNotifications();
