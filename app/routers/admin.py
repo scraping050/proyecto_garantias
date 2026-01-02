@@ -12,7 +12,7 @@ from pydantic import BaseModel
 from datetime import date
 from decimal import Decimal
 
-router = APIRouter(prefix="/api/admin", tags=["Admin - Financial Management"])
+router = APIRouter(prefix="/admin", tags=["Admin - Financial Management"])
 
 
 # ============================================

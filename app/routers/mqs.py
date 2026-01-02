@@ -11,7 +11,7 @@ from pydantic import BaseModel
 from datetime import date, datetime
 from decimal import Decimal
 
-router = APIRouter(prefix="/api/mqs", tags=["MQS Operations"])
+router = APIRouter(prefix="/mqs", tags=["MQS Operations"])
 
 
 # ============================================

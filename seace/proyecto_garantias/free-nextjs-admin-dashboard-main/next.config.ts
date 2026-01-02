@@ -1,13 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // output: 'export',
   basePath: '/seace',
   typescript: {
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
   },
   /* config options here */
   webpack(config) {
@@ -16,9 +13,6 @@ const nextConfig: NextConfig = {
       use: ["@svgr/webpack"],
     });
     return config;
-  },
-  typescript: {
-    ignoreBuildErrors: true,
   },
 
   turbopack: {
@@ -34,7 +28,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://127.0.0.1:5000/api/:path*',
+        destination: 'http://127.0.0.1:8000/:path*',
       },
     ];
   },
