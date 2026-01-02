@@ -265,7 +265,7 @@ const AppSidebar: React.FC = () => {
             <>
               {/* Logo MQS a la izquierda */}
               <Image
-                src="/images/logo/mqs-logo.jpg"
+                src="/seace/images/logo/mqs-logo.jpg"
                 alt="MQS Logo"
                 width={44}
                 height={44}
@@ -277,7 +277,7 @@ const AppSidebar: React.FC = () => {
               </span>
               {/* Logo JCQ a la derecha */}
               <Image
-                src="/images/logo/jcq-logo.jpg"
+                src="/seace/images/logo/jcq-logo.jpg"
                 alt="JCQ Logo"
                 width={44}
                 height={44}
@@ -287,7 +287,7 @@ const AppSidebar: React.FC = () => {
           ) : (
             /* Logo pequeño cuando está colapsado */
             <Image
-              src="/images/logo/mqs-logo.jpg"
+              src="/seace/images/logo/mqs-logo.jpg"
               alt="Logo"
               width={36}
               height={36}
