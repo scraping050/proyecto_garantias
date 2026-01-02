@@ -11,7 +11,7 @@ from decimal import Decimal
 from typing import Optional, List, Dict, Any
 from datetime import datetime, date
 
-router = APIRouter(prefix="/api/tendencias", tags=["Tendencias"])
+router = APIRouter(prefix="/tendencias", tags=["Tendencias"])
 
 
 # ============================================

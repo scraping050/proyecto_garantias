@@ -9,7 +9,7 @@ from app.database import get_db
 from typing import Optional
 from decimal import Decimal
 
-router = APIRouter(prefix="/api/dashboard", tags=["Dashboard"])
+router = APIRouter(prefix="/dashboard", tags=["Dashboard"])
 
 
 @router.get("/kpis")
