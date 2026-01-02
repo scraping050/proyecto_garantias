@@ -7,7 +7,7 @@ from app.database import get_db
 from app.models.seace import LicitacionesCabecera, LicitacionesAdjudicaciones
 from datetime import datetime
 
-router = APIRouter(prefix="/reportes", tags=["Reportes"])
+router = APIRouter(prefix="/api/reportes", tags=["Reportes"])
 
 class ReporteFiltros(BaseModel):
     search: Optional[str] = None
