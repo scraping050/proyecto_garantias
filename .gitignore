@@ -18,8 +18,8 @@ out/
 build/
 
 # Environment
-.env
-.env.local
+.env*
+CREDENCIALES.md
 
 # Local Data (databases, backups)
 data/
@@ -60,3 +60,8 @@ Thumbs.db
 # Old/duplicate projects
 newpro/
 backend/
+
+# Global ignores
+**/node_modules/
+**/prueba/
+**/1_database/

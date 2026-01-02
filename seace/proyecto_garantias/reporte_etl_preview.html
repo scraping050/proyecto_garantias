@@ -1,0 +1,149 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px;">
+        
+        <!-- Header -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 30px;">
+            <h1 style="margin: 0; font-size: 28px;">📊 Reporte ETL - Sistema SEACE</h1>
+            <p style="margin: 10px 0 0 0; font-size: 14px; opacity: 0.9;">
+                19 de December de 2025 - 00:09
+            </p>
+        </div>
+        
+        <!-- Estado General -->
+        <div style="background: #fff3cd; border: 2px solid #ffc107; border-radius: 10px; padding: 20px; margin-bottom: 30px; text-align: center;">
+            <h2 style="margin: 0 0 10px 0; color: #ffc107; font-size: 24px;">
+                ⚠️ Estado General: ATENCIÓN
+            </h2>
+            <div style="display: flex; justify-content: space-around; margin-top: 20px; flex-wrap: wrap;">
+                <div style="text-align: center; min-width: 100px; margin: 10px;">
+                    <div style="font-size: 32px; font-weight: bold; color: #28a745;">0</div>
+                    <div style="font-size: 12px; color: #666;">Scripts OK</div>
+                </div>
+                <div style="text-align: center; min-width: 100px; margin: 10px;">
+                    <div style="font-size: 32px; font-weight: bold; color: #ffc107;">5</div>
+                    <div style="font-size: 12px; color: #666;">Advertencias</div>
+                </div>
+                <div style="text-align: center; min-width: 100px; margin: 10px;">
+                    <div style="font-size: 32px; font-weight: bold; color: #dc3545;">0</div>
+                    <div style="font-size: 12px; color: #666;">Errores</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Alertas Críticas -->
+        <div style="background: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; margin-bottom: 30px; border-radius: 5px;">
+            <h3 style="margin: 0 0 10px 0; color: #856404;">⚠️ Alertas Críticas</h3>
+            <ul style='margin: 10px 0; padding-left: 20px;'><li style='margin: 5px 0; color: #721c24;'>Descargador SEACE: Nunca se ha ejecutado</li><li style='margin: 5px 0; color: #721c24;'>Cargador MySQL: Nunca se ha ejecutado</li><li style='margin: 5px 0; color: #721c24;'>Spider Garantías: Nunca se ha ejecutado</li></ul>
+        </div>
+        
+        <!-- Scripts -->
+        <h2 style="color: #333; border-bottom: 2px solid #667eea; padding-bottom: 10px; margin-bottom: 20px;">
+            📋 Estado de Scripts
+        </h2>
+        
+        <div style="margin-bottom: 20px; padding: 15px; background: #fff3cd; border-left: 5px solid #ffc107; border-radius: 5px;">
+            <h3 style="margin: 0 0 10px 0; color: #333;">
+                📥 Descargador SEACE
+                <span style="float: right; font-size: 14px;">⚠️ Nunca ejecutado</span>
+            </h3>
+            <p style="margin: 5px 0; color: #666; font-size: 14px;">Descarga archivos JSON de SEACE</p>
+            <div style="margin-top: 10px; font-size: 13px; color: #555;">
+                <strong>Última ejecución:</strong> N/A<br>
+                <strong>Registros procesados:</strong> 0<br>
+                <strong>Tiempo de ejecución:</strong> N/A
+            </div>
+            
+                <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                    <em>Sin ejecuciones en los últimos 7 días</em>
+                </div>
+            
+        </div>
+        
+        <div style="margin-bottom: 20px; padding: 15px; background: #fff3cd; border-left: 5px solid #ffc107; border-radius: 5px;">
+            <h3 style="margin: 0 0 10px 0; color: #333;">
+                💾 Cargador MySQL
+                <span style="float: right; font-size: 14px;">⚠️ Nunca ejecutado</span>
+            </h3>
+            <p style="margin: 5px 0; color: #666; font-size: 14px;">Carga datos JSON a MySQL</p>
+            <div style="margin-top: 10px; font-size: 13px; color: #555;">
+                <strong>Última ejecución:</strong> N/A<br>
+                <strong>Registros procesados:</strong> 0<br>
+                <strong>Tiempo de ejecución:</strong> N/A
+            </div>
+            
+                <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                    <em>Sin ejecuciones en los últimos 7 días</em>
+                </div>
+            
+        </div>
+        
+        <div style="margin-bottom: 20px; padding: 15px; background: #fff3cd; border-left: 5px solid #ffc107; border-radius: 5px;">
+            <h3 style="margin: 0 0 10px 0; color: #333;">
+                🕷️ Spider Garantías
+                <span style="float: right; font-size: 14px;">⚠️ Nunca ejecutado</span>
+            </h3>
+            <p style="margin: 5px 0; color: #666; font-size: 14px;">Enriquece con datos de entidades financieras</p>
+            <div style="margin-top: 10px; font-size: 13px; color: #555;">
+                <strong>Última ejecución:</strong> N/A<br>
+                <strong>Registros procesados:</strong> 0<br>
+                <strong>Tiempo de ejecución:</strong> N/A
+            </div>
+            
+                <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                    <em>Sin ejecuciones en los últimos 7 días</em>
+                </div>
+            
+        </div>
+        
+        <div style="margin-bottom: 20px; padding: 15px; background: #fff3cd; border-left: 5px solid #ffc107; border-radius: 5px;">
+            <h3 style="margin: 0 0 10px 0; color: #333;">
+                🤖 ETL Consorcios (Gemini)
+                <span style="float: right; font-size: 14px;">⚠️ Nunca ejecutado</span>
+            </h3>
+            <p style="margin: 5px 0; color: #666; font-size: 14px;">Procesa PDFs de consorcios con IA</p>
+            <div style="margin-top: 10px; font-size: 13px; color: #555;">
+                <strong>Última ejecución:</strong> N/A<br>
+                <strong>Registros procesados:</strong> 0<br>
+                <strong>Tiempo de ejecución:</strong> N/A
+            </div>
+            
+                <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                    <em>Sin ejecuciones en los últimos 7 días</em>
+                </div>
+            
+        </div>
+        
+        <div style="margin-bottom: 20px; padding: 15px; background: #fff3cd; border-left: 5px solid #ffc107; border-radius: 5px;">
+            <h3 style="margin: 0 0 10px 0; color: #333;">
+                🤖 ETL Consorcios (Groq)
+                <span style="float: right; font-size: 14px;">⚠️ Nunca ejecutado</span>
+            </h3>
+            <p style="margin: 5px 0; color: #666; font-size: 14px;">Procesa PDFs de consorcios con IA (alternativo)</p>
+            <div style="margin-top: 10px; font-size: 13px; color: #555;">
+                <strong>Última ejecución:</strong> N/A<br>
+                <strong>Registros procesados:</strong> 0<br>
+                <strong>Tiempo de ejecución:</strong> N/A
+            </div>
+            
+                <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px;">
+                    <em>Sin ejecuciones en los últimos 7 días</em>
+                </div>
+            
+        </div>
+        
+        
+        <!-- Footer -->
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; text-align: center; color: #666; font-size: 12px;">
+            <p>Este es un reporte automático generado por el Sistema de Monitoreo ETL</p>
+            <p>Para más detalles, ejecuta: <code style="background: #f4f4f4; padding: 2px 6px; border-radius: 3px;">python monitor_etl.py</code></p>
+        </div>
+        
+    </body>
+    </html>
+    

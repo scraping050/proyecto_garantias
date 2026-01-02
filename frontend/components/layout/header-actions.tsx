@@ -91,7 +91,7 @@ export function HeaderActions() {
                             {user?.avatar_url ? (
                                 <img src={user.avatar_url} alt="Avatar" className="w-full h-full object-cover" />
                             ) : (
-                                user?.nombre?.charAt(0).toUpperCase() || user?.username?.charAt(0).toUpperCase() || 'U'
+                                user?.nombre?.charAt(0).toUpperCase() || user?.id_corporativo?.charAt(0).toUpperCase() || 'U'
                             )}
                         </div>
                     </button>
@@ -99,9 +99,15 @@ export function HeaderActions() {
                     {/* Dropdown Menu */}
                     {isProfileOpen && (
                         <div className="absolute right-0 top-full mt-2 w-72 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-slate-700 overflow-hidden animate-in fade-in zoom-in-95 duration-200 origin-top-right">
-                            <div className="p-4 border-b border-gray-100 dark:border-slate-700 bg-gray-50/50 dark:bg-slate-900/50">
-                                <p className="font-bold text-gray-900 dark:text-white mb-1">{user?.nombre || 'Usuario'}</p>
-                                <p className="text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">{user?.job_title || 'Sin cargo definido'}</p>
+                            <div className="p-2 border-b border-gray-100 dark:border-slate-700 bg-gray-50/50 dark:bg-slate-900/50">
+                                <p className="font-bold text-gray-900 dark:text-white mb-1">{user?.nombre || user?.id_corporativo || 'Usuario'}</p>
+                                <p className="text-xs font-medium text-gray-600 dark:text-gray-300 mb-1">
+                                    {user?.perfil ? (
+                                        <span className="capitalize">{user.perfil.toLowerCase()}</span>
+                                    ) : (
+                                        user?.job_title || 'Sin rol definido'
+                                    )}
+                                </p>
                                 <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{user?.email || 'usuario@example.com'}</p>
                             </div>
 
@@ -137,43 +143,6 @@ export function HeaderActions() {
                             </div>
 
                             <div className="p-2">
-                                <button
-                                    onClick={() => {
-                                        setIsProfileOpen(false);
-                                        router.push('/profile');
-                                    }}
-                                    className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-700/50 text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-3 transition-colors"
-                                >
-                                    <div className="w-6 flex justify-center">
-                                        <i className="fas fa-user-circle text-gray-400"></i>
-                                    </div>
-                                    Editar perfil
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        setIsProfileOpen(false);
-                                        setIsSettingsModalOpen(true);
-                                    }}
-                                    className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-700/50 text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-3 transition-colors"
-                                >
-                                    <div className="w-6 flex justify-center">
-                                        <i className="fas fa-cog text-gray-400"></i>
-                                    </div>
-                                    Configuración
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        setIsProfileOpen(false);
-                                        setIsSupportModalOpen(true);
-                                    }}
-                                    className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-700/50 text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center gap-3 transition-colors"
-                                >
-                                    <div className="w-6 flex justify-center">
-                                        <i className="fas fa-circle-info text-gray-400"></i>
-                                    </div>
-                                    Soporte
-                                </button>
-                                <div className="h-px bg-gray-100 dark:bg-slate-700 my-1"></div>
                                 <button
                                     onClick={() => {
                                         setIsProfileOpen(false);

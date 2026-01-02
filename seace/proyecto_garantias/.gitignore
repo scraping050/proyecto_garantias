@@ -1,0 +1,53 @@
+# Archivos de configuración sensibles
+.env
+.env.*
+*.env
+
+# Recordatorios de seguridad
+SECURITY_REMINDER.md
+
+# Configuración local
+config/local_*.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+*.egg-info/
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+*.log.*
+
+# Base de datos
+*.sql
+*.db
+*.sqlite
+
+# Backups
+backup_*.sql
+*.bak
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos temporales
+*.tmp
+*.temp
+~*

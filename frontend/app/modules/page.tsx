@@ -19,7 +19,8 @@ export default function ModulesPage() {
     };
 
     const handleSEACEClick = () => {
-        router.push('/seace/resumen');
+        // Navigate to the separate SEACE project running on port 3001 in the same tab
+        window.location.href = 'http://localhost:3001';
     };
 
     return (
